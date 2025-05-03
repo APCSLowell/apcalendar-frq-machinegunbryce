@@ -34,20 +34,10 @@ public static int numberOfLeapYears(int year1, int year2)
    *  Returns 1 for January 1 (month = 1, day = 1) of any year.
    *  Precondition: The date represented by month, day, year is a valid date.
    */
-  public static int dayOfWeek(int month, int day, int year)
+public static int dayOfWeek(int month, int day, int year)
 {
-    int weekday = firstDayOfYear(year);
     int additionalDays = dayOfYear(month, day, year) - 1;
-
-    for(int d = 1; d <= additionalDays; d++)
-    {
-        weekday++;
-
-        if(weekday == 7)
-            weekday = 0;
-    }
-
-    return weekday;
+    return (firstDayOfYear(year) + additionalDays) % 7;
 }
   
   /** Returns the value representing the day of the week for the given date
